@@ -4,7 +4,7 @@ namespace App;
 
 class Database {
 
-    public function get_answers()
+    public function getAnswers()
     {
         $pdo = new \PDO(
             'mysql:dbname=testdb;host=localhost',

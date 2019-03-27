@@ -6,9 +6,7 @@ require_once  __DIR__ . '/../App/functions.php';
 
 
 $answer = new Database();
-$results = $answer->get_answers();
-
-$result = [(int)$results[0][0], (int)$results[1][0], (int)$results[2][0]];
+$results = $answer->getAnswers();
 
 $series = [
     [
@@ -17,15 +15,15 @@ $series = [
         'data' => [
             [
                 'name' => '寝る',
-                'y' => $result[0][0],
+                'y' => (int)$results[0]["COUNT(answer)"],
             ],
             [
                 'name' => 'ショッピングに行く',
-                'y' => $result[1][0],
+                'y' => (int)$results[1]["COUNT(answer)"],
             ],
             [
                 'name' => '勉強する',
-                'y' => $result[2][0],
+                'y' => (int)$results[2]["COUNT(answer)"],
             ],
         ],
     ],

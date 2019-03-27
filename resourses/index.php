@@ -37,7 +37,7 @@
         $('#btn').on('click', function () {
             if ($('#answer').val() === '') {
                 alert('選択してください');
-
+                return false;
             }
         });
     });

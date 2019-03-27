@@ -8,7 +8,7 @@ Highcharts.chart('container', {
         type: 'pie'
     },
     title: {
-        text: '今日の予定'
+        text: 'みんなの予定は?'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
