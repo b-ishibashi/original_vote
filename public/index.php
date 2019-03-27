@@ -2,12 +2,10 @@
 
 session_start();
 
-use app\Http\Session;
-use app\Http\Controllers\PollController;
+use App\Http\Session;
+use App\Http\Controllers\PollController;
 
-require_once __DIR__ . '/../app/Http/Controllers/PollController.php';
-require_once __DIR__ . '/../app/functions.php';
-
+require_once __DIR__ . '/../vendor/autoload.php';
 
 $poll = new PollController(new Session());
 

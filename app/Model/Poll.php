@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Model;
+namespace App\Model;
 
-use app\Http\Session;
+use App\Http\Session;
 
 class Poll
 {

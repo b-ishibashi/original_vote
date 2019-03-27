@@ -1,14 +1,10 @@
 <?php
 
-namespace app\Http\Controllers;
+namespace App\Http\Controllers;
 
-use app\Http\Session;
-use app\Model\Poll;
-use \app\Database;
-
-require_once __DIR__ . '/../Session.php';
-require_once __DIR__ . '/../../Model/Poll.php';
-require_once __DIR__ . '/../../Database/Database.php';
+use App\Http\Session;
+use App\Model\Poll;
+use App\Database;
 
 class PollController
 {
