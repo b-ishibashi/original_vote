@@ -1,12 +1,15 @@
 <?php
 
-use \App\Database;
-require_once __DIR__ . '/../App/Database/Database.php';
 require_once  __DIR__ . '/../App/functions.php';
 
-
-$answer = new Database();
-$results = $answer->getAnswers();
+// オフセット配列要素初期化
+for ($i = 0; $i < 3; $i++)
+{
+    if (empty($results[$i]["COUNT(answer)"]))
+    {
+        $results[$i]["COUNT(answer)"] = 0;
+    }
+}
 
 $series = [
     [

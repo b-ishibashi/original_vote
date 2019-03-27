@@ -12,7 +12,6 @@
 </header>
 <main>
     <h1>投票結果</h1>
-    <p><a href="index.php">戻る</a></p>
 </main>
 </body>
 
@@ -22,6 +21,6 @@
 
 <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 <div id="series" data-series="<?=h(json_encode($series))?>"></div>
-
+<p><a href="index.php">戻る</a></p>
 </html>
 

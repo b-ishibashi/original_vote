@@ -4,9 +4,11 @@ namespace App\Http\Controller;
 
 use App\Http\Session;
 use App\Model\Poll;
+use \App\Database;
 
 require_once __DIR__ . '/../Session.php';
 require_once __DIR__ . '/../../Model/Poll.php';
+require_once __DIR__ . '/../../Database/Database.php';
 
 class PollController {
 
@@ -19,7 +21,7 @@ class PollController {
         $this->session->createToken();
     }
 
-    public function post($request)
+    public function store($request)
     {
         try {
 
@@ -29,20 +31,23 @@ class PollController {
             // answer検証
             $this->validateAnswer($request);
 
-            // 投票成功
-            $this->session->set('err', '投票しました');
-
             //save
             (new Poll)->save($request);
 
-            // redirect
-            header('Location: /result.php');
+            //getAnswer
+
         } catch (\Exception $e) {
             $this->session->set('err', $e->getMessage());
-            exit;
-            // redirect
-            header('Location: /');
         }
+        // redirect
+        header('Location: /');
+    }
+
+    public function index()
+    {
+        $results = (new Database())->getAnswers();
+
+        include __DIR__ . '/../../../public/result.php';
     }
 
     private function validateToken($request)
