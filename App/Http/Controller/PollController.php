@@ -30,7 +30,7 @@ class PollController {
             $this->validateAnswer($request);
 
             // 投票成功
-            $this->session->set_session('err', '投票しました');
+            $this->session->set('err', '投票しました');
 
             //save
             (new Poll)->save($request);
@@ -38,7 +38,7 @@ class PollController {
             // redirect
             header('Location: /result.php');
         } catch (\Exception $e) {
-            $this->session->set_session('err', $e->getMessage());
+            $this->session->set('err', $e->getMessage());
             exit;
             // redirect
             header('Location: /');
@@ -48,13 +48,13 @@ class PollController {
     private function validateToken($request)
     {
         // 期待する値
-        $expected = $this->session->get_session('token');
+        $expected = $this->session->get('token');
 
         // 実際に送られてきた値
         $actual = $request['token'] ?? null;
 
         if ($expected === null || $actual === null || $expected !== $actual) {
-            throw new \Exception('invalidate token!');
+            throw new \Exception('invalid token!');
         }
     }
 
@@ -64,7 +64,7 @@ class PollController {
             !isset($request['answer']) ||
             !in_array($request['answer'], [0, 1, 2])
         ) {
-            throw new \Exception('invalidate answer!');
+            throw new \Exception('invalid answer!');
         }
     }
 }

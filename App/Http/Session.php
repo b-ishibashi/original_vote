@@ -9,12 +9,12 @@ class Session {
         $this->createToken();
     }
 
-    public function set_session($key, $value)
+    public function set($key, $value)
     {
         $_SESSION[$key] = $value;
     }
 
-    public function get_session($key)
+    public function get($key)
     {
         return $_SESSION[$key];
     }
