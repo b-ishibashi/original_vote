@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Session;
 use App\Model\Poll;
-use App\Database;
+use App\Database\Database;
 
 class PollController
 {
