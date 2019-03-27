@@ -1,0 +1,20 @@
+{
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.14"
+    },
+
+    "scripts": {
+        "fix": [
+            "php-cs-fixer fix app",
+            "php-cs-fixer fix public",
+            "php-cs-fixer fix resources/views"
+        ],
+        "serve": "php -S localhost:8080 -t public"
+    },
+    "autoload": {
+        "files": ["app/functions.php"],
+        "psr-4": {
+            "app\\": "app/"
+        }
+    }
+}

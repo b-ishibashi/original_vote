@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Model;
-use App\Http\Session;
+namespace app\Model;
 
-class Poll {
+use app\Http\Session;
 
+class Poll
+{
     public function save($request)
     {
         try {
@@ -18,7 +19,7 @@ class Poll {
             );
 
             $stmt = $pdo->prepare(
-                'insert into answers (answer, created, remote_addr, user_agent, answer_date) values (:answer, now(), :remote_addr, :user_agent, now())'
+                'insert into polls (answer, created, remote_addr, user_agent, answer_date) values (:answer, now(), :remote_addr, :user_agent, now())'
             );
             $stmt->bindValue(':answer', $request['answer'], \PDO::PARAM_INT);
             $stmt->bindValue(':remote_addr', $_SERVER['REMOTE_ADDR'], \PDO::PARAM_STR);
@@ -27,6 +28,5 @@ class Poll {
         } catch (\Exception $e) {
             (new Session())->set('err', '投票は1日1回までです');
         }
-
     }
 }

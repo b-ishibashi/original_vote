@@ -1,11 +1,11 @@
-create database original_vote;
+create database testdb;
 
 grant all on testdb.* to root@localhost identified by '';
 
 use testdb;
 
-drop table if exists answers;
-create table answers(
+drop table if exists polls;
+create table polls(
   id int not null auto_increment primary key,
   answer int not null,
   created datetime,

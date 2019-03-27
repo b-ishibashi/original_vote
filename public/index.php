@@ -2,11 +2,11 @@
 
 session_start();
 
-use App\Http\Session;
-use App\Http\Controller\PollController;
+use app\Http\Session;
+use app\Http\Controllers\PollController;
 
-require_once __DIR__ . '/../App/Http/Controller/PollController.php';
-require_once  __DIR__ . '/../App/functions.php';
+require_once __DIR__ . '/../app/Http/Controllers/PollController.php';
+require_once __DIR__ . '/../app/functions.php';
 
 
 $poll = new PollController(new Session());
@@ -16,4 +16,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     $poll->index($_REQUEST);
 }
-

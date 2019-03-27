@@ -1,22 +1,21 @@
 <?php
 
-namespace App\Http\Controller;
+namespace app\Http\Controllers;
 
-use App\Http\Session;
-use App\Model\Poll;
-use \App\Database;
+use app\Http\Session;
+use app\Model\Poll;
+use \app\Database;
 
 require_once __DIR__ . '/../Session.php';
 require_once __DIR__ . '/../../Model/Poll.php';
 require_once __DIR__ . '/../../Database/Database.php';
 
-class PollController {
-
+class PollController
+{
     private $session;
 
     public function __construct(Session $session)
     {
-
         $this->session = $session;
         $this->session->createToken();
     }
@@ -35,19 +34,48 @@ class PollController {
             (new Poll)->save($request);
 
             //getAnswer
-
         } catch (\Exception $e) {
             $this->session->set('err', $e->getMessage());
         }
         // redirect
-        header('Location: /');
+        header('Location: /result.php');
     }
 
     public function index()
     {
+        include __DIR__ . '/../../../resources/views/index.php';
+    }
+
+    public function result($request)
+    {
         $results = (new Database())->getAnswers();
 
-        include __DIR__ . '/../../../public/result.php';
+        for ($i = 0; $i < 3; $i++) {
+            if (empty($results[$i]["COUNT(answer)"])) {
+                $results[$i]["COUNT(answer)"] = 0;
+            }
+        }
+        $series = [
+            [
+                'name' => 'Brands',
+                'colorByPoint' => true,
+                'data' => [
+                    [
+                        'name' => '寝る',
+                        'y' => (int)$results[0]["COUNT(answer)"],
+                    ],
+                    [
+                        'name' => 'ショッピングに行く',
+                        'y' => (int)$results[1]["COUNT(answer)"],
+                    ],
+                    [
+                        'name' => '勉強する',
+                        'y' => (int)$results[2]["COUNT(answer)"],
+                    ],
+                ],
+            ],
+        ];
+        include __DIR__ . '/../../../resources/views/result.php';
     }
 
     private function validateToken($request)

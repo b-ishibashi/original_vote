@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http;
+namespace app\Http;
 
-class Session {
-
+class Session
+{
     public function __construct()
     {
         $this->createToken();
