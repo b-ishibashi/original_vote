@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+}
+
+header {
+    background: lightsteelblue;
+}
+
+header h1 {
+    margin: 0;
+    padding: 20px;
+}
+
+header h1 a {
+    text-decoration: none;
+    color: white;
+}
+
+
+main h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+p a:hover {
+    color: red;
+}
+
+.contents {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.box {
+    position: relative;
+    display: inline-block;
+    padding: 20px;
+    margin: 10px;
+    background: mediumturquoise;
+    border-radius: 5px;
+    box-shadow: 0 5px 0 black;
+}
+
+.box:hover {
+    opacity: 0.5;
+}
+
+.selected {
+    box-shadow: 0 0 0 black;
+    transform: translate3d(0, 5px, 0);
+}
+
+
+
+
+
+
+
+
