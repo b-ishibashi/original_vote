@@ -2,8 +2,8 @@
 
 namespace App\Http;
 
-class Session {
-
+class Session
+{
     public function __construct()
     {
         $this->createToken();

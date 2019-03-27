@@ -3,18 +3,14 @@
 session_start();
 
 use App\Http\Session;
+use App\Http\Controllers\PollController;
 
-require_once __DIR__ . '/../App/Http/Controller/PollController.php';
-require_once  __DIR__ . '/../App/functions.php';
-
-
-use App\Http\Controller\PollController;
+require_once __DIR__ . '/../vendor/autoload.php';
 
 $poll = new PollController(new Session());
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $poll->post($_REQUEST);
+    $poll->store($_REQUEST);
+} else {
+    $poll->index($_REQUEST);
 }
-
-require __DIR__ . '/../resourses/index.php';

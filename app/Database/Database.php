@@ -1,9 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Database;
 
-class Database {
-
+class Database
+{
     public function getAnswers()
     {
         $pdo = new \PDO(
@@ -16,10 +16,11 @@ class Database {
         );
 
         $stmt = $pdo->prepare(
-            'select COUNT(answer) from answers group by answer'
+            'select COUNT(answer) from polls group by answer'
         );
 
         $stmt->execute();
+
         return $stmt->fetchAll();
     }
 }
